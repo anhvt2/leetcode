@@ -2,25 +2,33 @@ from typing import List
 
 class Solution:
     def maxFrequency(self, nums: List[int], k: int) -> int:
-        nums.sort()  # sorted: [2,2,2,3,3,4,4,5,5,10]
-        left = 0
-        total = 0
-        max_freq = 0
+        freq,first,last = [0]*51,[-1]*51,[-1]*51
+        res = 0
 
-        for right in range(len(nums)):
-            total += nums[right]
+        # prefix sum occurences of k
+        ps = [0]
+        for a in nums: ps.append(ps[-1] + (1 if a ==k else 0)) #i + 1 is number of ks at or before index i
 
-            # while the cost to make all numbers in [left, right] equal to nums[right] exceeds k
-            while (right - left + 1) * nums[right] - total > k:
-                total -= nums[left]
-                left += 1
+        # for each value you can target, find first, last occurence, and ks inbetween
+        for i in range(len(nums)): 
+            v = nums[i]
+            if v == k: continue
+            freq[v] += 1
+            if first[v] == -1: first[v] = i
+            last[v] = i
 
-            max_freq = max(max_freq, right - left + 1)
+            #now calculate if removing ks is worth it
+            numberOfKs = ps[last[v]+1] - ps[first[v]+1]#number of ks between first and last occurence
+            net = freq[v] - numberOfKs
+            if net <= 0: 
+                first[v] = i
+                freq[v] = 1
+            res = max(res,net)
 
-        return max_freq
+        return res + ps[-1]
 
 # Test it
 sol = Solution()
 nums = [10,2,3,4,5,5,4,3,2,2]
 k = 10
-print(sol.maxFrequency(nums, k))  # Output: 4 ✅
+print(sol.maxFrequency(nums, k)) 

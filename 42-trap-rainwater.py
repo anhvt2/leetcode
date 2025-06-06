@@ -2,10 +2,10 @@ from typing import List, Optional
 from collections import deque
 
 # Intuition: find V shape (monotonically decreasing followed by monotonically increasing)
+# Wrong: for large basin contains several Vs, e.g. [4,2,0,3,2,5]
+# from typing import List
 
-from typing import List
-
-# class Solution:
+# class Solution: # self
 #     def trap(self, height: List[int]) -> int:
 #         n = len(height)
 #         total_water = 0
@@ -40,9 +40,7 @@ from typing import List
 
 #         return total_water
 
-from typing import List
-
-class Solution:
+class Solution: # ChatGPT - https://www.youtube.com/watch?v=SHNMoumKE44
     def trap(self, height: List[int]) -> int:
         left, right = 0, len(height) - 1
         left_max, right_max = 0, 0

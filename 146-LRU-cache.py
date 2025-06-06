@@ -23,11 +23,11 @@ class LRUCache:
             self.cache.popitem(last=False)
 
 
-# Your LRUCache object will be instantiated and called as such:
-capacity = ["LRUCache","put","put","get","put","get","put","get","get","get"]
+# # Your LRUCache object will be instantiated and called as such:
+# capacity = ["LRUCache","put","put","get","put","get","put","get","get","get"]
 
-obj = LRUCache(capacity)
-param_1 = obj.get(key)
-obj.put(key,value)
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
 
 
