@@ -6,6 +6,8 @@ class Solution:
         wordSet = set(wordList)
         if endWord not in wordSet:
             return 0
+        # Time complexity: O(len(beginWord) * len(wordList))
+        # Space complexity: O(len(beginWord) * len(wordList))
 
         queue = deque([(beginWord, 1)])  # (word, step count)
 

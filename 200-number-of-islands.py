@@ -95,6 +95,8 @@ class Solution:
 
         return count
 
+# Time complexity: O(m*n)
+# Space complexity: O(m*n)
 
 grid = [
   ["1","1","0","0","0"],
