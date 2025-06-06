@@ -46,7 +46,8 @@ class Solution:
             return ""
 
         # Step 3: Sort characters by frequency (highest first)
-        sorted_chars = sorted(freq.items(), key=lambda x: -x[1])
+        # sorted_chars = sorted(freq.items(), key=lambda x: -x[1])
+        sorted_chars = freq.most_common()
 
         # Step 4: Initialize empty result array
         res = [''] * n
