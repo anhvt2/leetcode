@@ -41,7 +41,7 @@ class Solution:
             max_len = max(len1, len2)
 
             if max_len > end - start:
-                # Update pointers position based on discovered max_len
+                # Reset pointers position based on discovered max_len
                 start = i - (max_len - 1) // 2
                 end = i + max_len // 2
 
