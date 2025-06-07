@@ -1,0 +1,38 @@
+
+# from typing import List, Optional
+# from collections import deque, Counter
+
+# class Solution:
+#     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+#         count = Counter(nums)
+#         rank_count = sorted(count.items(), key=lambda x: -x[1]) # naturally small->big, flip order with negative sign
+#         topKList = []
+#         for i in range(k):
+#             values, freqs = rank_count[i] # unpack
+#             topKList += [values]
+#         return topKList
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    freq = {}
+    for n in nums:
+        freq[n] = 1 + freq.get(n, 0) # return count of n, or 0 if not exist
+
+    heap = [(-v, k) for k, v in freq.items()]
+    heapq.heapify(heap)
+
+    topKList = []
+    for _ in range(k):
+        topKList.append(heapq.heappop(heap)[1])
+
+return topKList
+
+
+nums = [ 9, 16, 16,  6, 14, 18, 13, 16,  4,  1,  9, 11, 11, 14,  0,  3,  8,
+       19,  1,  4,  8, 15,  7,  2,  1, 11,  5, 13,  1, 11, 18, 18,  2, 15,
+       16, 10, 19, 10, 19, 18, 13, 12,  5, 14, 18,  1,  7, 14,  5, 17]
+
+sol = Solution()
+k = 10
+result = sol.topKFrequent(nums, k)
+print(result)

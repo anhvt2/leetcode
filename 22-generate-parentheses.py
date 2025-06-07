@@ -28,11 +28,17 @@ class Solution:
         result = []
 
         def backtrack(current: str, open_count: int, close_count: int):
-            # open count: how many "("
-            # close count: how many ")"
+            # open count: how many "(", close count: how many ")". stop if hit length limit
             if len(current) == 2 * n:
                 result.append(current)
                 return
+            """
+            We build up valid strings one character at a time using recursion. At each step, we decide whether to:
+
+            Add '(' — if we haven't used all n left parentheses yet.
+
+            Add ')' — only if we have more '(' than ')' so far (to stay valid).
+            """
             if open_count < n:
                 backtrack(current + "(", open_count + 1, close_count)
             if close_count < open_count:
