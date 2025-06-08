@@ -26,7 +26,7 @@ class Solution:
         anagrams = defaultdict(list)
         for s in strs:
             anagrams["".join(sorted(s))].append(s)
-        return list(anagrams.values())
+return list(anagrams.values())
 
 sol = Solution()
 strs = ["eat","tea","tan","ate","nat","bat"]
