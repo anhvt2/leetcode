@@ -7,16 +7,22 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        # Base case
-        if not root or root == p or root == q:
-            return root
+        def dfs(root, p, q):
+            if root is None:
+                return None
+            
+            if root == p or root == q:
+                return root
+            # Idea: Start with left and go recursively until hit one of the node
+            left = dfs(root.left, p, q)
+            # Idea: Do the opposite
+            right = dfs(root.right, p, q)
 
-        # Recurse on left and right subtree
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
-
-        # If both left and right are non-None, root is LCA
-        if left and right:
-            return root
-        # Otherwise, either one side returns the answer or None
-        return left if left else right
+            # Start building up recursively and return LCA
+            if left and right:
+                return root
+            elif not left:
+                return right
+            elif not right:
+                return left
+        return dfs(root, p, q)
