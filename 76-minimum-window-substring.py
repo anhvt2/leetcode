@@ -17,7 +17,7 @@ class Solution:
             window_count[s[r]] += 1
             r += 1
             
-            while all(t_count[char < window_count[char]] for char in t_count):
+            while all(window_count[char] >= t_count[char] for char in t_count):
                 if r - l < min_len:
                     min_len = r - l
                     min_window = s[l:r]
