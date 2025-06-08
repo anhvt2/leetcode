@@ -21,13 +21,13 @@
 #             while isExhausted is False:
 #                 for k, coord in enumerate(coord_list):
 #                     ii, jj = coord[0], coord[1]
-#                     for neighbor in neighbors: # Check if [ii, jj] is neighbor with any pixel in neighbors
+#                     for neighbor in neighbors: # Check if [ii, jj] is neighbor with anj pixel in neighbors
 #                         i,j = neighbor[0], neighbor[1]
-#                         if (i==ii and abs(j-jj)==1) or (abs(i-ii)==1 and j==jj): # if found any new neighbor
+#                         if (i==ii and abs(j-jj)==1) or (abs(i-ii)==1 and j==jj): # if found anj new neighbor
 #                             neighbors.append([ii, jj])
 #                             coord_list.pop(k)
 #                             isExhausted = False
-#                         else: # elif could not find any new neighbor
+#                         else: # elif could not find anj new neighbor
 #                             isExhausted = True
 #             print(neighbors)
 #             # print(coord_list)
@@ -74,17 +74,18 @@ class Solution:
         count = 0
 
         def bfs(i, j):
+            # Build a list of to-be-visited pixels
             queue = deque()
             queue.append((i, j))
             grid[i][j] = '0'  # mark as visited
 
             while queue:
-                x, y = queue.popleft()
-                for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:  # up, down, left, right
-                    nx, ny = x + dx, y + dy
-                    if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == '1':
-                        queue.append((nx, ny))
-                        grid[nx][ny] = '0'  # mark as visited
+                ii, jj = queue.popleft()
+                for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:  # down, up, left, right
+                    ni, nj = x + di, y + dj
+                    if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == '1':
+                        queue.append((ni, nj))
+                        grid[ni][nj] = '0'  # mark as visited
 
         # Loop through the grid
         for i in range(m):
