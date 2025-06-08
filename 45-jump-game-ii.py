@@ -22,7 +22,11 @@ class Solution:
         jumps = 0
         farthest = 0
         end = 0
-
+        # i             current index you're examining
+        # nums[i]       max jump length from position i
+        # farthest      the farthest index we can reach in the current jump range
+        # end           the end of the current jump range (we must jump before or at end)
+        # jumps         how many jumps we've taken so far
         for i in range(len(nums) - 1):
             farthest = max(farthest, i + nums[i])
             if i == end:
@@ -30,4 +34,19 @@ class Solution:
                 end = farthest
 
         return jumps
+
+# class Solution:
+#     def jump(self, nums: List[int]) -> int:
+#         l = 0
+#         r = 0
+#         jump = 0
+#         while r < len(nums)-1:
+#             m = 0
+#             for i in range(l,r+1):
+#                 if nums[i]+i > m:
+#                     m = nums[i]+i
+#             l = r+1
+#             r = m
+#             jump += 1
+#         return jump
 
