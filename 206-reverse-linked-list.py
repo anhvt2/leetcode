@@ -33,18 +33,18 @@ class Solution:
         prev = None
         curr = head
 
-        # Traverse all the nodes of Linked List
-        while curr is not None:
+        # Traverse all the nodes of linked list
+        while curr: #  is not None:
             # Store next
             next_node = curr.next
 
             # Reverse current node's next pointer
             curr.next = prev
 
-            # Move pointers one position ahead
+            # Advance curr and prev pointers
             prev = curr
             curr = next_node
-        return prev
+        return prev # return the last node because it's reversed
 
 
 # Follow the steps below to solve the problem:

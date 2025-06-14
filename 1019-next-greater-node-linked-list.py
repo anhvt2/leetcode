@@ -31,6 +31,7 @@ class Solution:
         stack = []  # Stack of indices
 
         # Step 2: Monotonic stack
+        # stack continuously pops until the last value of stack more than val, i.e. values[stack[-1]] > val
         for i, val in enumerate(values):
             while stack and values[stack[-1]] < val:
                 answer[stack.pop()] = val
