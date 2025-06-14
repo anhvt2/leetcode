@@ -28,7 +28,6 @@ def print_list(node):
         node = node.next
     print(result)
 
-
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         slow = head
@@ -37,6 +36,16 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         return slow
+
+# Alternative, more human, less memory-efficient
+# class Solution:
+#     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         nodes = []
+#         curr = head
+#         while curr:
+#             nodes.append(curr)
+#             curr = curr.next
+#         return nodes[len(nodes)//2]
 
 # For odd-length lists, slow lands at the true middle.
 # For even-length lists, slow lands at the second middle (which is what the problem wants).
