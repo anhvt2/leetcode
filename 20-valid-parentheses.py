@@ -44,6 +44,22 @@ class Solution:
 
         return len(stack) == 0
 
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        # Dictionary to match opening and closing brackets
+        bracket_map = {')': '(', '}': '{', ']': '['}
+
+        for char in s:
+            if char in bracket_map.values():  # If it's an opening bracket
+                stack.append(char)
+            elif char in bracket_map:  # If it's a closing bracket
+                # If the stack is empty or the top of the stack is not the matching opening bracket
+                if not stack or stack.pop() != bracket_map[char]:
+                    return False
+        # If the stack is empty, all the brackets were properly matched
+        return not stack
+
 
 s = "()"
 sol = Solution()
