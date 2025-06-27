@@ -28,27 +28,27 @@ class Solution:
         #
         return dummy_head.next
 
-# Helper function to create a linked list from a list of list_numbers
-def build_list(list_numbers):
-    dummy = ListNode()
-    current = dummy
-    for n in list_numbers:
-        current.next = ListNode(n)
-        current = current.next
-    return dummy.next
+# # Helper function to create a linked list from a list of list_numbers
+# def build_list(list_numbers):
+#     dummy = ListNode()
+#     current = dummy
+#     for n in list_numbers:
+#         current.next = ListNode(n)
+#         current = current.next
+#     return dummy.next
 
-# Helper function to print a linked list as a list
-def print_list(node):
-    result = []
-    while node:
-        result.append(node.val)
-        node = node.next
-    print(result)
+# # Helper function to print a linked list as a list
+# def print_list(node):
+#     result = []
+#     while node:
+#         result.append(node.val)
+#         node = node.next
+#     print(result)
 
-l1 = build_list([2,4,3])
-l2 = build_list([5,6,4])
-sol = Solution()
-result = sol.addTwoNumbers(l1, l2)
-print_list(l1)
-print_list(l2)
-print_list(result)
+# l1 = build_list([2,4,3])
+# l2 = build_list([5,6,4])
+# sol = Solution()
+# result = sol.addTwoNumbers(l1, l2)
+# print_list(l1)
+# print_list(l2)
+# print_list(result)
