@@ -20,8 +20,8 @@ class Solution:
         # Sort
         nodes.sort()
         # Convert simple lists to a linked list
-        head = root = ListNode()
+        dummy_head = root = ListNode()
         for node in nodes:
             root.next = ListNode(node)
             root = root.next
-        return head.next
+        return dummy_head.next

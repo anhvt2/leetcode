@@ -12,20 +12,35 @@
 #             topKList += [values]
 #         return topKList
 
+import heapq
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-    freq = {}
-    for n in nums:
-        freq[n] = 1 + freq.get(n, 0) # return count of n, or 0 if not exist
+        freq = {}
+        for n in nums:
+            freq[n] = 1 + freq.get(n, 0) # return count of n, or 0 if not exist
 
-    heap = [(-v, k) for k, v in freq.items()]
-    heapq.heapify(heap)
+        heap = [(-v, k) for k, v in freq.items()]
+        heapq.heapify(heap)
 
-    topKList = []
-    for _ in range(k):
-        topKList.append(heapq.heappop(heap)[1])
+        # topKList = []
+        # for _ in range(k):
+        #     topKList.append(heapq.heappop(heap)[1])
+        topKList = [heapq.heappop(heap)[1] for _ in range(k)]
+        
+        return topKList
 
-return topKList
+# import heapq
+# from collections import Counter
+
+# class Solution:
+#     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+#         # Count the frequency of each number using Counter
+#         freq = Counter(nums)
+        
+#         # Use heapq.nlargest to get the k elements with the highest frequency
+#         # The key used for the heap is the frequency of the number (value)
+#         return [item[0] for item in heapq.nlargest(k, freq.items(), key=lambda x: x[1])]
+
 
 
 nums = [ 9, 16, 16,  6, 14, 18, 13, 16,  4,  1,  9, 11, 11, 14,  0,  3,  8,
