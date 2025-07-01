@@ -1,0 +1,135 @@
+\documentclass[a4paper,12pt]{article}
+
+% Import necessary packages
+\usepackage{xcolor} 
+\usepackage{listings} 
+\usepackage{geometry} 
+\usepackage{tcolorbox} 
+\usepackage{multicol} % For multi-column support
+
+% Set page margins (narrower margins)
+\geometry{top=0.75in, bottom=0.75in, left=0.5in, right=0.5in}
+
+% Define code style with very small font size and line wrapping
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{gray!10},   % Light gray background for the code
+    basicstyle=\ttfamily\tiny,         % Font size for code
+    breaklines=true,                   
+    captionpos=b,                    
+    numbers=left,                    
+    numberstyle=\tiny\color{gray},     % Line numbers style
+    keywordstyle=\color{blue},         % Keywords color (blue)
+    commentstyle=\color{magenta},      % Comments color (magenta)
+    stringstyle=\color{red},           % Strings color (red)
+    showstringspaces=false
+}
+
+% Set style for code listings
+\lstset{style=mystyle}
+
+% Define a custom tcolorbox for code
+% \newtcolorbox[auto counter, number within=section]{mycode}[2][]{colframe=blue!50!white, colback=blue!5, 
+% coltitle=black, fonttitle=\bfseries, title=Code Example~\thetcbcounter: #2,#1, width=\linewidth}
+\newtcolorbox[auto counter, number within=section]{mycode}[2][]{colframe=blue!50!white, colback=blue!5, 
+coltitle=black, fonttitle=\small\bfseries, title=#2,#1, width=\linewidth}
+
+
+
+\title{Code Snippet Repository}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% Use multi-column layout with 2 columns
+\begin{multicols}{2}
+
+\section{Python Code Snippets}
+
+\subsection{Max Area of Island}
+\begin{mycode}[label={lst:max-area-of-island}]{Max area of islands}
+\begin{lstlisting}[language=Python]
+from collections import deque
+
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        m = len(grid)
+        n = len(grid[0])
+        count = 0
+        self.max_area = -float('inf')
+
+        def bfs(i,j):
+            queue = deque()
+            queue.append((i,j))
+            grid[i][j] = 0 # marked as visited
+            area = 1
+
+            while queue:
+                ii, jj = queue.popleft()
+                for di, dj in [(-1, 0), (1, 0), (0, 1), (0, -1)]:
+                    ni, nj = ii + di, jj + dj
+                    if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == 1:
+                        queue.append((ni, nj))
+                        grid[ni][nj] = 0 # marked as visited
+                        area += 1
+            self.max_area = max(self.max_area, area)
+
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    bfs(i,j)
+                    count += 1
+        return max(self.max_area, 0)
+\end{lstlisting}
+\end{mycode}
+
+\subsection{Koko eating bananas}
+\begin{mycode}[label={lst:koko-eating-bananas}]{Binary Search}
+\begin{lstlisting}[language=Python]
+import math
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        left, right = 1, max(piles)
+        while left < right:
+            mid = (left + right) // 2
+            # Calculate round up ceil() number of hours
+            # hours = sum((pile + mid - 1) // mid for pile in piles)
+            hours = sum(math.ceil(pile / mid) for pile in piles)
+            if hours > h:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+\end{lstlisting}
+\end{mycode}
+
+\columnbreak
+
+\subsection{Two-sum}
+
+\begin{mycode}[label={lst:two-sum}]{Two Sum}
+\begin{lstlisting}[language=Python]
+import math
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        left, right = 1, max(piles)
+        while left < right:
+            mid = (left + right) // 2
+            # Calculate round up ceil() number of hours
+            # hours = sum((pile + mid - 1) // mid for pile in piles)
+            hours = sum(math.ceil(pile / mid) for pile in piles)
+            if hours > h:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+\end{lstlisting}
+\end{mycode}
+
+
+\end{multicols}
+
+\end{document}
