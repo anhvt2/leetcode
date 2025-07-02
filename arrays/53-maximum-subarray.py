@@ -12,16 +12,16 @@ class Solution:
                 max_ending_here = 0   
         return max_so_far
 
-# class Solution:
-#     def maxSubArray(self, nums: List[int]) -> int:
-#         # Kadane algorithm: https://en.wikipedia.org/wiki/Maximum_subarray_problem
-#         best_sum = -float('inf')  # Initialize to a very small number
-#         current_sum = 0
-#         for x in nums:
-#             # Update the current_sum to be the maximum of the current element alone or adding it to the current_sum
-#             current_sum = max(x, current_sum + x)
-#             # # Update the best_sum to store the maximum value encountered so far
-#             best_sum = max(best_sum, current_sum)
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        # Kadane algorithm: https://en.wikipedia.org/wiki/Maximum_subarray_problem
+        best_sum = -float('inf')  # Initialize to a very small number
+        current_sum = 0
+        for x in nums:
+            # Update the current_sum to be the maximum of the current element alone or adding it to the current_sum
+            current_sum = max(x, current_sum + x)
+            # # Update the best_sum to store the maximum value encountered so far
+            best_sum = max(best_sum, current_sum)
         
-#         # Return the best_sum after the loop has finished processing all elements
-#         return best_sum
+        # Return the best_sum after the loop has finished processing all elements
+        return best_sum
