@@ -1,20 +1,28 @@
-
 from typing import List
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        candidate = None
-        count = 0
+        n = len(nums)
+        for i in set(nums):
+            if nums.count(i) > n//2:
+                return i
+
+# from typing import List
+
+# class Solution:
+#     def majorityElement(self, nums: List[int]) -> int:
+#         candidate = None
+#         count = 0
         
-        # First pass: find the candidate
-        for num in nums:
-            if count == 0:
-                candidate = num
-            count += (1 if num == candidate else -1)
+#         # First pass: find the candidate
+#         for num in nums:
+#             if count == 0:
+#                 candidate = num
+#             count += (1 if num == candidate else -1)
         
-        # Second pass: confirm the candidate if necessary (for generalized cases)
-        # (not needed in this problem since we assume a majority element exists)
-        return candidate
+#         # Second pass: confirm the candidate if necessary (for generalized cases)
+#         # (not needed in this problem since we assume a majority element exists)
+#         return candidate
 
 
 # class Solution:
