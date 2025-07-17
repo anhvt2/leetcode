@@ -9,11 +9,13 @@ class Solution:
             dp[0][j] = 1 # 1 way in the first row
         for i in range(m):
             dp[i][0] = 1 # 1 way in the first column
+        # O(m*n)
         for i in range(1, m):
             for j in range(1, n):
                 dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[i][j]
 
+# O(1) both time and space complexity
 # from math import comb
 # class Solution:
 #     def uniquePaths(self, m: int, n: int) -> int:
