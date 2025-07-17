@@ -8,9 +8,3 @@ class Solution:
                 return [num_to_index[complement], i]
             num_to_index[num] = i
         return []
-
-nums = [3,2,4]
-target = 6
-sol = Solution()
-result = sol.twoSum(nums, target)
-print(result)
