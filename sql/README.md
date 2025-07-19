@@ -26,3 +26,8 @@ tab_space_size = 2 # Sets the indentation to use 2 spaces.
 [sqlfluff:rules:capitalisation.keywords] #  # Enforces {upper, lower}case keywords.
 capitalisation_policy = upper
 ```
+
+How to use
+```bash
+sqlfluff fix 180-consecutive-numbers.sql --dialect mysql
+```
