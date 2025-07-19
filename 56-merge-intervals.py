@@ -36,20 +36,41 @@ from typing import List, Optional
 
 #         return merged
 
+# class Solution:
+#     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+#         # Sort by left values
+#         intervals.sort(key=lambda x: x[0]) 
+#         merged = [intervals[0]]
+        
+#         for current in intervals[1:]:
+#             last = merged[-1]
+#             if current[0] <= last[1]:
+#                 # Update bounds if overlap, including subset cases
+#                 merged[-1][1] = max(merged[-1][1], current[1])
+#             else:
+#                 merged.append(current)
+#         return merged
+
+from typing import List
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        # Sort by left values
-        intervals.sort(key=lambda x: x[0]) 
-        merged = [intervals[0]]
+        if not intervals:
+            return []
         
-        for current in intervals[1:]:
-            last = merged[-1]
-            if current[0] <= last[1]:
-                # Update bounds if overlap, including subset cases
-                merged[-1][1] = max(merged[-1][1], current[1])
+        intervals.sort(key=lambda x: x[0])
+        res = []
+        
+        tmp_start, tmp_end = intervals[0][0], intervals[0][1]
+        for i in range(1, len(intervals)):
+            current_start, current_end = intervals[i]
+            if current_start <= tmp_end:
+                current_end = max(tmp_end, tmp_end)
             else:
-                merged.append(current)
-        return merged
+                res.append([tmp_start, tmp_end])
+                tmp_start, tmp_end = current_start, current_end
+            
+        res.append([tmp_start, tmp_end])
+        return res
 
 sol = Solution()
 # intervals = [[1,3],[2,6],[8,10],[15,18]]
