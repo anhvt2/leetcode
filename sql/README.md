@@ -17,11 +17,19 @@ Here is a template for `~/.sqlfluff`
 
 ```
 [sqlfluff]
-dialect = ansi  # Specifies the SQL dialect to use (e.g., ansi, postgres, bigquery).
-max_line_length = 120 # Sets the maximum line length for formatting.
+templater = jinja
+sql_file_exts = .sql,.sql.j2,.dml,.ddl
 
 [sqlfluff:indentation]
-tab_space_size = 2 # Sets the indentation to use 2 spaces.
+indented_joins = False
+indented_using_on = True
+template_blocks_indent = False
+
+[sqlfluff:templater]
+unwrap_wrapped_queries = True
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = True
 
 [sqlfluff:rules:capitalisation.keywords] #  # Enforces {upper, lower}case keywords.
 capitalisation_policy = upper
