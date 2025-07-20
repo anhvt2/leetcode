@@ -1,19 +1,10 @@
 # Write your MySQL query statement below
-
-WITH Average AS (
-    SELECT p.product_id, p.start_date, p.end_date, p.price, u.purchase_date, u.units
-    FROM Prices p
-    LEFT JOIN UnitsSold u
-    ON p.product_id = u.product_id 
-        AND p.start_date <= u.purchase_date 
-        AND u.purchase_date <= p.end_date
-)
-
-SELECT 
-    product_id,
-    ROUND(
-        IFNULL(SUM(price*units) / NULLIF(sum(units), 0), 0),
-        2
-    ) AS average_price
-FROM Average
+SELECT
+    p.product_id,
+    COALESCE(ROUND(SUM(u.units * p.price) * 1.0 / SUM(u.units), 2),  0) AS average_price
+FROM prices AS p
+LEFT JOIN unitssold AS u
+    ON
+        p.product_id = u.product_id
+        AND (u.purchase_date BETWEEN p.start_date AND p.end_date)
 GROUP BY product_id;
