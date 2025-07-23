@@ -19,7 +19,7 @@ class Solution:
             while queue:
                 ii, jj = queue.popleft()
                 for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:  # down, up, left, right
-                    ni, nj = x + di, y + dj
+                    ni, nj = ii + di, jj + dj
                     if 0 <= ni < m and 0 <= nj < n and grid[ni][nj] == '1':
                         queue.append((ni, nj))
                         grid[ni][nj] = '0'  # mark as visited

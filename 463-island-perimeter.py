@@ -8,7 +8,7 @@ class Solution:
 
         for i in range(m):
             for j in range(n):
-                if grid[r][c] == 1:
+                if grid[i][j] == 1:
                     perimeter += 4
                     if i>0 and grid[i-1][j] == 1: # check top neighbor
                         perimeter -= 2
