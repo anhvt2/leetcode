@@ -17,6 +17,7 @@ class MedianFinder:
             # Move smallest number in large array to small array
             heapq.heappush(self.max_heap, -heapq.heappop(self.min_heap))
         elif len(self.max_heap) > len(self.min_heap):
+            # Move largest number in small array to large array
             heapq.heappush(self.min_heap, -heapq.heappop(self.max_heap))
         
 
