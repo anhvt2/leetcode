@@ -30,4 +30,4 @@ class Solution:
             else: # ignore weird spaces
                 continue
         return res + sign * num # handle the last num and one num case
-        #1+(4+5+2)-3
+        # 1+(4+5+2)-3
