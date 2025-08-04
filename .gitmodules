@@ -4,3 +4,6 @@
 [submodule "sql/solutions"]
 	path = sql/solutions
 	url = https://github.com/apalle1/sql-leetcode
+[submodule "Leetcode-Solutions"]
+	path = Leetcode-Solutions
+	url = https://github.com/ata-turhan/Leetcode-Solutions
