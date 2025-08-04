@@ -8,6 +8,11 @@ class Solution:
         3. Form `frame` by the most frequent tasks has length
             frame = (max_freq - 1) * (n+1) + max_count
         4. Solution = max(frame, number of tasks). If there are enough tasks, then should not be idle.
+        If max_count <= n, then return frame.
+        If max_count > n, then return len(tasks).
+
+        Time: O(T)
+        Space: O(1)
         """
         # Count task frequencies
         freq = Counter(tasks)
