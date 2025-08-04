@@ -1,3 +1,6 @@
+# Time complexity: O(log n)
+# Space complexity: O(1)
+
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         left, right = 0, len(nums) - 1
@@ -11,6 +14,9 @@ class Solution:
                 right = mid
         # peak is where left == right
         return left
+
+# Time complexity: O(n)
+# Space complexity: O(1)
 
 # class Solution:
 #     def findPeakElement(self, nums: List[int]) -> int:
