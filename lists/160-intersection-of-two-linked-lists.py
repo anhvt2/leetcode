@@ -20,6 +20,6 @@ class Solution:
             # Advance two pointers - when any reaches the end, then redirect to another linked list
             # If there is an intersection, a and b will meet after at most two passes
             a = a.next if a else headB
-            b = b.b.next if b else headA
+            b = b.next if b else headA
         
         return a # or b
