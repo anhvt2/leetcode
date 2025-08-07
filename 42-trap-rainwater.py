@@ -1,59 +1,27 @@
 from typing import List, Optional
 from collections import deque
 
-# Intuition: find V shape (monotonically decreasing followed by monotonically increasing)
-# Wrong: for large basin contains several Vs, e.g. [4,2,0,3,2,5]
-# from typing import List
+from typing import List
 
-# class Solution: # self
-#     def trap(self, height: List[int]) -> int:
-#         n = len(height)
-#         total_water = 0
-
-#         def expand_left(i):
-#             if i == 0 or height[i] >= height[i - 1]:
-#                 return [i]
-#             return expand_left(i - 1) + [i]
-
-#         def expand_right(i):
-#             if i == n - 1 or height[i] >= height[i + 1]:
-#                 return [i]
-#             return [i] + expand_right(i + 1)
-
-#         for i in range(1, n - 1):
-#             if height[i - 1] > height[i] and height[i] < height[i + 1]:
-#                 # Found a valley
-#                 left = expand_left(i)
-#                 right = expand_right(i)
-#                 valley = left[:-1] + right  # merge, avoid duplicate center
-#                 if len(valley) < 3:
-#                     continue  # need at least 3 bars to trap water
-
-#                 left_wall = height[valley[0]]
-#                 right_wall = height[valley[-1]]
-#                 water_level = min(left_wall, right_wall)
-
-#                 # Compute water for this valley
-#                 for idx in valley[1:-1]:  # exclude boundary walls
-#                     trapped = max(0, water_level - height[idx])
-#                     total_water += trapped
-
-#         return total_water
-
-class Solution: # ChatGPT - https://www.youtube.com/watch?v=SHNMoumKE44
+class Solution:
     def trap(self, height: List[int]) -> int:
-        left, right = 0, len(height) - 1
-        left_max, right_max = 0, 0
-        total_water = 0
+        left, right = 0, len(height) - 1       # Two pointers at both ends
+        left_max, right_max = 0, 0             # Track max height seen so far from each side
+        total_water = 0                        # Accumulated trapped water
 
+        # Move pointers toward each other
         while left < right:
+            # Always move the smaller side inward:
             if height[left] < height[right]:
+                # If current bar on left is new max, update left_max
                 if height[left] >= left_max:
                     left_max = height[left]
                 else:
+                    # Otherwise, water can be trapped above this bar
                     total_water += left_max - height[left]
                 left += 1
             else:
+                # Symmetric logic for the right side
                 if height[right] >= right_max:
                     right_max = height[right]
                 else:
@@ -62,8 +30,7 @@ class Solution: # ChatGPT - https://www.youtube.com/watch?v=SHNMoumKE44
 
         return total_water
 
-
-        
+    
 height = [0,1,0,2,1,0,1,3,2,1,2,1] # [[1,0,2], [2,1,0,1,3], [2,1,2]]
 sol = Solution()
 print(sol.trap(height))
