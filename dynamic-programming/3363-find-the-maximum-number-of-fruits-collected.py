@@ -6,7 +6,7 @@ class Solution:
         # (1) Sum along the main diagonal
         first = sum(fruits[i][i] for i in range(n))
 
-        # (2) Top-right → bottom-right (dirs: (1,-1),(1,0),(1,1))
+        # (2) Top-right -> bottom-right (dirs: (1,-1),(1,0),(1,1))
         dp2 = [[float('-inf')]*n for _ in range(n)]
         dp2[0][n-1] = fruits[0][n-1]
         for x in range(1, n):
