@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 class LRUCache:
-
+    # first index: least recently used, last index: most recently used
     def __init__(self, capacity: int):
         self.cache = OrderedDict()
         self.capacity = capacity
@@ -15,7 +15,7 @@ class LRUCache:
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
-            # Remove it first to update order
+            # Move it first to update order
             self.cache.move_to_end(key)
         self.cache[key] = value
         if len(self.cache) > self.capacity:
