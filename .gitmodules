@@ -2,7 +2,7 @@
 	path = solutions
 	url = https://github.com/everthis/leetcode-js
 [submodule "sql/solutions"]
-	path = sql/solutions
+	path = database/solutions
 	url = https://github.com/apalle1/sql-leetcode
 [submodule "Leetcode-Solutions"]
 	path = Leetcode-Solutions
