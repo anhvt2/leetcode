@@ -7,3 +7,6 @@
 [submodule "Leetcode-Solutions"]
 	path = Leetcode-Solutions
 	url = https://github.com/ata-turhan/Leetcode-Solutions
+[submodule "LeetCode-Solutions"]
+	path = LeetCode-Solutions
+	url = https://github.com/kamyu104/LeetCode-Solutions
