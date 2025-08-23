@@ -19,12 +19,10 @@ class Solution:
         
         # # Iterate through the list starting from the second index
         # for i in range(1, len(nums)):
-        #     current = max(prev1, prev2 + nums[i])  # Max of robbing or not robbing the current house
-        #     prev2 = prev1  # Move prev1 to prev2
-        #     prev1 = current  # Move current to prev1
+        #     prev2, prev1 = prev1, max(prev1, prev2 + nums[i])
+        # return prev1
         
         # # The result will be stored in prev1 (dp[n-1])
-        # return prev1
 
         # Time complexity: O(n)
         # Space complexity: O(n)
