@@ -1,5 +1,8 @@
+from typing import List
+
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
+        # ---- First solution
         # decompose nums into list of lists, convert non-1 to 0
         l = []
         tmp0, tmp1 = [], []
@@ -31,4 +34,21 @@ class Solution:
                     max1 = max(max1, len(l[i] + l[i+2]))
         return max1
 
+        # ---- Second solution
+        # left = 0
+        # zeros = 0
+        # best = 0
+
+        # for right, x in enumerate(nums):
+        #     if x == 0:
+        #         zeros += 1
+        #     # move left pointers until the last zero
+        #     while zeros > 1:
+        #         if nums[left] == 0:
+        #             zeros -= 1
+        #         left += 1
+        #     # delete one element (the single zero if present), so use right - left
+        #     best = max(best, right - left)
+
+        # return best
 
