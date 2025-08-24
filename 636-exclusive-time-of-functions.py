@@ -20,7 +20,7 @@ class Solution:
             else:  # 'end'
                 # Finish current function; include this timestamp
                 f = stack.pop()
-                res[f] += t - prev + 1
-                prev = t + 1   # next slice starts after this end time
+                res[f] += t - prev + 1 # length of the interval
+                prev = t + 1   # next slice start at t + 1 because t has been used up by res[f]
 
         return res
