@@ -25,7 +25,7 @@ class Solution:
         for _ in range(m*n):
             ans.append(mat[row][col])
             
-            if (row + col) % 2 == 0:
+            if (row + col) % 2 == 0: # move top-right
                 if col == n-1: # hit right boundary
                     row += 1
                 elif row == 0: # hit top boundary
@@ -34,8 +34,7 @@ class Solution:
                     row -= 1
                     col += 1
 
-            else: # (row + col) % 2 = 1
-
+            else: # (row + col) % 2 = 1 # move bottom-left
                 if row == m - 1: # hit bottom boundary
                     col += 1 
                 elif col == 0: # hit left boundary
