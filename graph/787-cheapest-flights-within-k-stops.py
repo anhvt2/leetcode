@@ -1,6 +1,6 @@
 # class Solution:
 #     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-#         # Bellman-Ford algorithm (can also consider Djikstra algorithm and shortest path algorithm)
+#         # Bellman-Ford algorithm (can also consider Dijkstra algorithm and shortest path algorithm)
 #         # 1. Init cost array dp of length n with float('inf'), except dp[src] = 0
 #         # 2. Iterate k+1 times (k stops or nodes -> k+1 edges)
 #         #   * copy tmp = dp[:]
