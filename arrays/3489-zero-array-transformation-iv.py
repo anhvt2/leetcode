@@ -13,6 +13,7 @@ class Solution:
                 # create the new sum {x+val}
                 add = {x+val for x in S[i]}
                 # union them
+                # S[i] = S[i].union(add) 
                 S[i] |= add
             # check if all targets are now achievable
             if all(nums[i] in S[i] for i in range(n)):
