@@ -12,11 +12,9 @@ class Solution:
             if not root.left and not root.right:
                 res.append(s)
             if root.left:
-                tmp_l = s + '->' + str(root.left.val)
-                dfs(root.left, tmp_l)
+                dfs(root.left, s + '->' + str(root.left.val))
             if root.right:
-                tmp_r = s + '->' + str(root.right.val)
-                dfs(root.right, tmp_r)
+                dfs(root.right, s + '->' + str(root.right.val))
         res = []
         dfs(root, str(root.val))
         return res
