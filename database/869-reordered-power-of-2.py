@@ -11,6 +11,6 @@ class Solution:
         p = 1
         for _ in range(31):          # 2^0 .. 2^30 cover up to 1e9+
             sigs.add(signature(p))
-            p <<= 1
+            p *= 2
 
         return signature(n) in sigs
