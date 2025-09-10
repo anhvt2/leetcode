@@ -40,7 +40,7 @@ class Solution:
 
         # min-heap entries are (cost_so_far, current_node, stops_used)
         heap = [(0, src, 0)]
-        # best[(node, stops)] = lowest cost found to reach `node` using exactly `stops` stops
+        # best[(node, stops)] -> cost: lowest cost found to reach `node` using exactly `stops` stops
         best = {}
 
         while heap:
