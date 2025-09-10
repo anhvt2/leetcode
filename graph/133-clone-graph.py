@@ -21,13 +21,14 @@ class Solution:
             if n in old2new:
                 return old2new[n]
 
-            # (1)) Clone it `n` -> `copy``
+            # (1)) Clone a Node `n` (key) -> `copy` (value)
             copy = Node(n.val)
             old2new[n] = copy
 
             # (2) Recursively clone and attach all neighbors
             for nei in n.neighbors:
-                copy.neighbors.append(dfs(nei)) # not n.nei, but propagate throughout the graph recursively
+                copy.neighbors.append(dfs(nei)) # not `nei`, but copy.nei = dfs(nei); also propagate throughout the graph recursively
             
             return copy
+
         return dfs(node)
