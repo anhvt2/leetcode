@@ -8,6 +8,7 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def dfs(root, p, q):
+            # Does this subtree started at `root` contain either p or q (or both)?
             if root is None:
                 return None
             
