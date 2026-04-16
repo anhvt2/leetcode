@@ -1,17 +1,21 @@
 class Solution:
-    def closestTarget(self, words: List[str], target: str, startIndex: int) -> int:
-        ds = []
+    def closestTarget(self, words, target, startIndex):
+        """
+        Key idea:
+        - Circular array → distance between i and startIndex is:
+              min(|i - startIndex|, n - |i - startIndex|)
+        - Just check all positions where words[i] == target.
+
+        This avoids the "i ± n" trick and is much cleaner.
+        """
+
         n = len(words)
-        for i, word in enumerate(words):
-            if word == target:
-                ds.append(abs(i - startIndex))
-                ds.append(abs(i - n - startIndex))
-                ds.append(abs(i + n - startIndex))
-        if not ds:
-            return -1
-        
-        min_d = float('inf')
-        for d in ds:
-            if d < min_d:
-                min_d = d
-        return min_d
+        ans = float('inf')
+
+        for i, w in enumerate(words):
+            if w == target:
+                d = abs(i - startIndex)
+                # take shorter direction around the circle
+                ans = min(ans, min(d, n - d))
+
+        return -1 if ans == float('inf') else ans
